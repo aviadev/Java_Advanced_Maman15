@@ -1,5 +1,4 @@
 
-import java.util.IllegalFormatConversionException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,15 +7,15 @@ public class Main {
         {
             int numOfThreads, numOfLoops;
 
-	        DataBase db = new DataBase();
+	        Data data = new Data();
 
             numOfThreads = getAndValidateInput("Threads");
 
-            db.initializeListWithRandomNumbers(numOfThreads);
+	        data.initializeListWithRandomNumbers(numOfThreads);
 	        numOfLoops = getAndValidateInput("Loops");
 
-	        Logic logic = new Logic (db, numOfThreads ,numOfLoops);
-            logic.doLoops();
+	        Logic logic = new Logic (data, numOfThreads ,numOfLoops);
+            logic.processLoops(data);
 
 
 
