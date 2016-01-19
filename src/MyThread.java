@@ -5,12 +5,13 @@ public class MyThread implements Runnable
 {
 
 private  int id;
+private Data data;
 private String name;
 //private int numOfThreads;
 
 public int getThreadId() {return id;}
 
-//public MyThread() {}
+public MyThread() {}
 
 /*public MyThread (String name, int id, Data data)
 	{
@@ -24,19 +25,24 @@ public MyThread (int id, Data data)
 		//this.data = data;
 	}*/
 
-public MyThread (int id)
-	{
-		this.id = id;
+public MyThread (Data data)
+{
+		this.data = data;
 	}
+
+public MyThread (int id)
+{
+	this.id = id;
+}
 
 @Override
 public void run()
 	{
 		System.out.println("\nStarted Run - currentThreadId: " + Thread.currentThread().getId());
-		updateData();
+		updateData(this);
 	}
 
-public void updateData(Data data)
+public void updateData(MyThread threadId)
 
 	{
 		int size = data.size();

@@ -11,7 +11,7 @@ public class Logic
 
 private int numOfLoops;
 //private int	numOfThreads;
-//protected Data data;
+protected Data data;
 private ExecutorService executor;
 //private MyThread myThread;
 
@@ -20,7 +20,7 @@ public Logic () {};
 
 public Logic(Data data, int numOfThreads, int numOfLoops)
 	{
-		//this.data = data;
+		this.data = data;
 		//this.numOfThreads = numOfThreads;
 		this.numOfLoops = numOfLoops;
 		//myThread = new MyThread();
@@ -36,7 +36,7 @@ protected void processLoops(Data data)
 
 		for (int i = 0; i < numOfLoops; i++)
 			{
-				Runnable worker = new MyThread(data.threadArrayList.get(0).getThreadId());
+				Runnable worker = new MyThread(data);
 				executor.execute(worker);
 
 				refreshConsole(data, i+1, false);
