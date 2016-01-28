@@ -4,22 +4,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args)
-        {
-            int numOfThreads, numOfLoops;
+	    {
+		    int numOfThreads = getAndValidateInput("Threads");
+		    int numOfLoops = getAndValidateInput("Loops");
 
-	        Data data = new Data();
+		    Threads threads = new Threads(numOfThreads);
 
-            numOfThreads = getAndValidateInput("Threads");
+		    for (int i = 0; i <= numOfLoops; i++) //One time more for representing initial state
+			    {
+			    //   System.out.println("\n---About to refresh console---\n");
+			    threads.refreshConsole(i);
+			    //  System.out.println("\n---Done refreshing console---\n");
+			    threads.process();
 
-	        data.initializeListWithRandomNumbers(numOfThreads);
-	        numOfLoops = getAndValidateInput("Loops");
+			    }
+		    //    System.out.println("\n---Done process method---\n");
+	    }
 
-	        Logic logic = new Logic (data, numOfThreads ,numOfLoops);
-            logic.processLoops(data);
-
-
-
-        }
 
 private static int getAndValidateInput(String inputType)
 	{
@@ -35,7 +36,7 @@ private static int getAndValidateInput(String inputType)
 			try
 				{
 				retVal = Integer.parseInt(userInput);
-				if (retVal < 1) retVal = 1;
+
 				isSuccessful = true;
 				}
 			catch (NumberFormatException ex)
