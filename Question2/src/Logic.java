@@ -1,3 +1,4 @@
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -5,6 +6,7 @@ import java.util.concurrent.Executors;
 public class Logic
 {
 
+private static int loopCount = 0;
 private ArrayList<Pylosof> pylosofs;
 private ArrayList<Stick> sticks;
 private HashMap<Pylosof, List<Stick>> hashMap;
@@ -76,11 +78,14 @@ protected void run() throws InterruptedException
 				break;
 				}
 				}
+			}
 			long tEnd = System.currentTimeMillis();
 			long tDelta = tEnd - tStart;
 			double elapsedSeconds = tDelta / 1000.0;
-			System.out.println(elapsedSeconds);
-			}
+
+		loopCount++;
+		System.out.println(MessageFormat.format("System time is: {0}, Loop # is: {1}", elapsedSeconds, loopCount));
+
 	}
 
 private boolean canGetTwoSticks(Pylosof p)

@@ -18,6 +18,10 @@ public static void main(String[] args) throws InterruptedException
 		logic.initiateEachPylosofWithSticks();
 		logic.setAllSticksAsAvailable();
 		logic.setAllPylosofsToWaitState();
-		logic.run();
+		for (int i = 0; i < 100; i++)
+			{
+			logic.run();
+			}
+
 	}
 }
